@@ -1,6 +1,6 @@
 public class Main {
-    public static void countMinSalary(Employee[] employees) {
-        if (employees.length > 0) {
+    public static void employeeMinSalary(Employee[] employees) {
+        if (employees[0] != null) {
             Employee emp = employees[0];
             for (Employee employee : employees) {
                 if (emp.getSalaryStaff() > employee.getSalaryStaff())
@@ -9,12 +9,12 @@ public class Main {
 
             System.out.println("Сотрудник с минимальной зарплатой: " + emp.getSalaryStaff() + " " + emp.getStaff() + " " + emp.getId());
         } else {
-            System.out.println("Массив пустой");
+            throw new NullPointerException("Проверьте массив");
         }
     }
 
-    public static void countMaxSalary(Employee[] employees) {
-        if (employees.length > 0) {
+    public static void employeeMaxSalary(Employee[] employees) {
+        if (employees[0] != null) {
             Employee emp = employees[0];
             for (Employee employee : employees) {
                 if (emp.getSalaryStaff() < employee.getSalaryStaff()) {
@@ -25,13 +25,17 @@ public class Main {
 
             System.out.println("Сотрудник с максимальной зарплатой: " + emp.getSalaryStaff() + " " + emp.getStaff() + " " + emp.getId());
         } else {
-            System.out.println("Массив пустой");
+            throw new NullPointerException("Проверьте массив");
         }
     }
 
-    public static void typeAllStaff(Employee[] employees) {
+    public static void allStaff(Employee[] employees) {
+        if (employees[0] != null) {
         for (Employee employee : employees) {
             System.out.println(employee);
+        }
+        } else {
+            throw new NullPointerException("Проверьте массив");
         }
     }
 
@@ -50,7 +54,7 @@ public class Main {
         System.out.println("Средняя зарплата: " + average);
     }
 
-    public static void countAllStaff(Employee[] employees) {
+    public static void allStaffFIO(Employee[] employees) {
         for (Employee employee : employees) {
             System.out.println("Сотрудники компании: " + employee.getStaff());
         }
@@ -70,11 +74,11 @@ public class Main {
         employee[8] = new Employee("Ivanov Ivan Ivanovich9", 50000, 3);
         employee[9] = new Employee("Ivanov Ivan Ivanovich10", 50000, 2);
 
-        typeAllStaff(employee);
-        countMinSalary(employee);
-        countMaxSalary(employee);
+        allStaff(employee);
+        employeeMinSalary(employee);
+        employeeMaxSalary(employee);
         countStaffSalary(employee);
         averageSalary(employee);
-        countAllStaff(employee);
+        allStaffFIO(employee);
     }
 }
